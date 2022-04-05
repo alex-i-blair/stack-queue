@@ -12,8 +12,7 @@ class Queue {
   }
 
   hasNext() {
-    if (this.#list[this.#index]) return true;
-    return false;
+    return !!this.#list[this.#index];
   }
 }
 
