@@ -1,20 +1,18 @@
 class Queue {
   #list = [];
+  #index = 0;
 
-  constructor() {
-    this.index = 0;
-  }
   enqueue(item) {
     this.#list.push(item);
   }
 
   dequeue() {
-    this.index++;
-    return this.#list[this.index - 1] ?? null;
+    this.#index++;
+    return this.#list[this.#index - 1] ?? null;
   }
 
   hasNext() {
-    if (this.#list[this.index + 1]) return true;
+    if (this.#list[this.#index]) return true;
     return false;
   }
 }
