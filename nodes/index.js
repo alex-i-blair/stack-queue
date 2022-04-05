@@ -1,24 +1,67 @@
 class LinkedList {
-  data;
-  next;
+  #data;
+  #next;
 
   constructor(data) {
-    this.next = null;
-    this.data = data;
+    this.#next = null;
+    this.#data = data;
   }
   add(node) {
-    !this.next ? (this.next = node) : this.next.add(node);
-    console.log(this);
+    !this.#next ? (this.#next = node) : this.#next.add(node);
   }
 
   getList() {
     // check this.next and if this.next then next until !this.next
     // push to array data of final node(n) + node(n-1)... until n === 0
-
-    if (!this.next) return this.data;
-    return `${this.data} ${this.next.getList()}`;
+    if (!this.#next) return this.#data;
+    return `${this.#data} ${this.#next.getList()}`;
   }
 }
+
+class BinaryTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  add(node) {
+    //We are checking if the node is greater than this.value.
+    // If it is we check if this.right is null.
+    // If it is, this.right = node
+    // otherwise we add another node to this.right
+    // Then do the same for the left but for the node < this.value situation
+
+    if (node > this.value) {
+      if (!this.right) {
+        this.right = node;
+      } else {
+        this.right.add(node);
+      }
+    } else if (node < this.value) {
+      if (!this.left) {
+        this.left = node;
+      } else {
+        this.left.add(node);
+      }
+    }
+    // node > this.value && this.right === null
+    //   ? (this.right = node)
+    //   : this.right.add(node);
+    // (node < this.value && this.left === null)
+    //   ? (this.left = node)
+    //   : this.left.add(node);
+  }
+}
+const B = new BinaryTreeNode('B');
+const A = new BinaryTreeNode('A');
+const C = new BinaryTreeNode('C');
+const D = new BinaryTreeNode('D');
+
+// B will be the root of the tree:
+B.add(A);
+B.add(D);
+B.add(C);
 
 const root = new LinkedList('A');
 const nodeB = new LinkedList('B');
