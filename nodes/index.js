@@ -46,53 +46,53 @@ class BinaryTreeNode {
     }
   }
 }
-// ******** from Arma Burton: *********
 
-// class PersonTreeNode {
-//   constructor(person) {
-//     this.value = person.name;
-//     this.person = person;
-//     this.left = null;
-//     this.right = null;
-//   }
-//   add(person) {
-//     if (person.name > this.name) {
-//       if (!this.right) {
-//         this.right = person;
-//       } else {
-//         this.right.add(person);
-//       }
-//     }
-//     if (person.name < this.name) {
-//       if (!this.left) {
-//         this.left = person;
-//       } else {
-//         this.left.add(person);
-//       }
-//     }
-//   }
-//   getPerson(name) {
-//     if (this.value === name) {
-//       return this.person;
-//     } else if (name < this.value) {
-//       if (!this.left) return null;
-//       return this.left.getPerson(name);
-//     } else if (name > this.value) {
-//       if (!this.right) return null;
-//       return this.right.getPerson(name);
-//     }
-//   }
-// }
-// const jones = new PersonTreeNode({
-//   name: 'Jones',
-//   phone: '555-1212',
-//   address: '123 Main St',
-// });
-// jones.add(brook);
-// jones.add(smith);
-// jones.add(nelson);
-// console.log(jones.getPerson('Nelson'));
-// console.log(jones.getPerson('Smith'));
+class PersonTreeNode {
+  constructor(person) {
+    this.value = person.name;
+    this.person = person;
+    this.left = null;
+    this.right = null;
+  }
+  add(person) {
+    if (person.person.name > this.value) {
+      if (!this.right) {
+        this.right = person;
+      } else {
+        this.right.add(person);
+      }
+    } else if (person.person.name < this.value) {
+      if (!this.left) {
+        this.left = person;
+      } else {
+        this.left.add(person);
+      }
+    }
+  }
+
+  getPerson(name) {
+    if (this.value === name) {
+      return this.person;
+    } else if (name < this.value) {
+      if (!this.left) return null;
+      return this.left.getPerson(name);
+    } else if (name > this.value) {
+      if (!this.right) return null;
+      return this.right.getPerson(name);
+    }
+  }
+}
+
+const jones = new PersonTreeNode({
+  name: 'Jones',
+  phone: '555-1212',
+  address: '123 Main St',
+});
+jones.add(brook);
+jones.add(smith);
+jones.add(nelson);
+console.log(jones.getPerson('Nelson'));
+console.log(jones.getPerson('Smith'));
 
 const B = new BinaryTreeNode('B');
 const A = new BinaryTreeNode('A');
